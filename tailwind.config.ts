@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -44,6 +45,7 @@ export default {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
+        'accent-green': 'hsl(var(--accent-green-base))',
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
@@ -53,21 +55,28 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					DEFAULT: 'hsl(var(--sidebar-background))'
+				},
+        // PRD chart colors
+        'chart-1': '#e74c3c',
+        'chart-2': '#3498db',
+        'chart-3': '#2ecc71',
+        'chart-4': '#f1c40f',
+        'chart-5': '#9b59b6',
+        // Direct PRD color names (can be used if semantic names aren't fitting)
+        'prd-primary-text': '#212529',
+        'prd-secondary-text': '#878A99',
+        'prd-accent-blue': '#299CDB',
+        'prd-accent-red': '#F06548',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // 0.375rem
+				md: 'calc(var(--radius) - 2px)', // 0.375rem - 2px
+				sm: 'calc(var(--radius) - 4px)' // 0.375rem - 4px
 			},
+      fontFamily: {
+        sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -89,7 +98,12 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+			},
+      boxShadow: {
+        // PRD shadows map to existing Tailwind utilities like shadow-sm
+        // default: 'shadow-sm', // This would override Tailwind's default shadow if needed
+        // header: 'shadow-sm', // Utility class 'shadow-sm' already exists
+      }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
